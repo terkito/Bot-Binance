@@ -10,8 +10,8 @@ from freqtrade.configuration import TimeRange
 from freqtrade.constants import (DATETIME_PRINT_FORMAT, DEFAULT_DATAFRAME_COLUMNS,
                                  DL_DATA_TIMEFRAMES, Config)
 from freqtrade.data.converter import (clean_ohlcv_dataframe, convert_trades_to_ohlcv,
-                                      ohlcv_to_dataframe, trades_df_remove_duplicates,
-                                      trades_list_to_df)
+                                      ohlcv_to_dataframe, reduce_dataframe_footprint,
+                                      trades_df_remove_duplicates, trades_list_to_df)
 from freqtrade.data.history.idatahandler import IDataHandler, get_datahandler
 from freqtrade.enums import CandleType
 from freqtrade.exceptions import OperationalException
@@ -103,7 +103,9 @@ def load_data(datadir: Path,
                                  data_handler=data_handler,
                                  candle_type=candle_type,
                                  )
+
         if not hist.empty:
+            hist = reduce_dataframe_footprint(hist)
             result[pair] = hist
         else:
             if candle_type is CandleType.FUNDING_RATE and user_futures_funding_rate is not None:
