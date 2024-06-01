@@ -2,8 +2,26 @@
 
 We **strongly** recommend that Windows users use [Docker](docker_quickstart.md) as this will work much easier and smoother (also more secure).
 
-If that is not possible, try using the Windows Linux subsystem (WSL) - for which the Ubuntu instructions should work.
+If that is not possible, try using the Windows Linux subsystem (WSL) - for which the Ubuntu instructions should work.\
 Otherwise, please follow the instructions below.
+
+---
+
+First of all, make sure you get the whole repository by running:
+
+git clone <https://github.com/freqtrade/freqtrade.git>
+
+Now, choose to install freqtrade automatically (recommended) or manually and follow the next instructions.
+
+## Install freqtrade automatically
+
+### Run these commands
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy Bypass
+cd freqtrade
+. .\setup.ps1
+```
 
 ## Install freqtrade manually
 
@@ -14,13 +32,7 @@ Otherwise, please follow the instructions below.
 !!! Hint
     Using the [Anaconda Distribution](https://www.anaconda.com/distribution/) under Windows can greatly help with installation problems. Check out the [Anaconda installation section](installation.md#installation-with-conda) in the documentation for more information.
 
-### 1. Clone the git repository
-
-```bash
-git clone https://github.com/freqtrade/freqtrade.git
-```
-
-### 2. Install ta-lib
+### Install ta-lib
 
 Install ta-lib according to the [ta-lib documentation](https://github.com/TA-Lib/ta-lib-python#windows).
 
